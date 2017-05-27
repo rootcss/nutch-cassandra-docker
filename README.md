@@ -1,19 +1,18 @@
 # POC for Apache Nutch 2.3 with Cassandra on Docker
-=======================
 
 Make sure you have docker installed on your system.
 
-### Build the images ( this will build the application )
+### Build the images
 ```
 ./bin/build.sh
 ```
 
-### Start all containers with data folders from scripts
+### Start all containers
 ```
 ./bin/start.sh
 ```
 
-### stop all containers 
+### Stop all containers
 ```
 ./bin/stop.sh
 ```
