@@ -14,9 +14,10 @@ sed  -i "/^gora\.cassandrastore\.servers.*/ s/.*//"  $NUTCH_HOME/conf/gora.prope
 echo gora.cassandrastore.servers=$cassandra_ip:9160 >> $NUTCH_HOME/conf/gora.properties
 vim -c '%s/localhost/'$cassandra_ip'/' -c 'x' $NUTCH_HOME/conf/gora-cassandra-mapping.xml
 
-nutchserver_port=$(printenv NUTCHSERVER_PORT)
-
-$NUTCH_HOME/bin/nutch nutchserver $nutchserver_port
+echo "Starting Nutch server.."
+$NUTCH_HOME/bin/nutch nutchserver  > /dev/null &
+echo "Starting Nutch Web UI server.."
+$NUTCH_HOME/bin/nutch webapp  > /dev/null &
 
 echo "export PATH=$PATH" >> /etc/env_profile
 
