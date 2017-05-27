@@ -63,13 +63,6 @@ RUN sed  -i '/field name="date" type.*/ s/.*/&\n\n        <field name="rawconten
 RUN rm $NUTCH_HOME/conf/nutch-site.xml
 ADD config/nutch-site.xml $NUTCH_HOME/conf/nutch-site.xml
 
-# Port that nutchserver will use
-ENV NUTCHSERVER_PORT 8899
-
-#RUN cd $NUTCH_HOME && ls -al
-
-#RUN mkdir -p /opt/nutch/urls && cd /opt/crawl
-
 ADD bootstrap.sh /etc/bootstrap.sh
 RUN chown root:root /etc/bootstrap.sh
 RUN chmod 700 /etc/bootstrap.sh
@@ -78,4 +71,4 @@ VOLUME ["/data"]
 
 CMD ["/etc/bootstrap.sh", "-d"]
 
-EXPOSE 8899
+EXPOSE 8080 8081
